@@ -85,6 +85,7 @@ class IssuerCollectionViewController: UICollectionViewController {
         loadBackgroundView()
         reloadCollectionView()
         navigationController?.styleDefault()
+        navigationController?.presentationController?.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -140,6 +141,7 @@ class IssuerCollectionViewController: UICollectionViewController {
         
         let settingsTable = SettingsTableViewController()
         let controller = NavigationController(rootViewController: settingsTable)
+        controller.presentationController?.delegate = self
         present(controller, animated: true, completion: nil)
     }
     
@@ -708,6 +710,17 @@ extension IssuerCollectionViewController : UIDocumentPickerDelegate {
         let data = try? Data(contentsOf: url)
 
         importCertificate(from: data)
+    }
+}
+
+//MARK: Delegate functions conform UIAdaptivePresentationControllerDelegate
+extension IssuerCollectionViewController : UIAdaptivePresentationControllerDelegate {
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        print("presentationControllerDidDismiss")
+        loadIssuers(shouldReloadCollection: false)
+        loadCertificates(shouldReloadCollection: false)
+        loadBackgroundView()
+        reloadCollectionView()
     }
 }
 

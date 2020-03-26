@@ -76,6 +76,13 @@ class SettingsTableViewController: UITableViewController {
         
         navigationController?.navigationBar.barStyle = barStyle
     }
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        if #available(iOS 13.0, *) {
+            navigationController?.presentationController?.delegate?.presentationControllerDidDismiss?(navigationController!.presentationController!)
+        }
+        super.dismiss(animated: flag, completion: completion)
+    }
 
     @objc func dismissSettings() {
         Logger.main.info("Dismissing the settings screen.")

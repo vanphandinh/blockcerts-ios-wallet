@@ -6,7 +6,7 @@ target 'certificates' do
   # use_frameworks!
 
   # Pods for wallet
-  pod 'CoreBitcoin', :podspec => 'https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec', :inhibit_warnings => true
+  # pod 'CoreBitcoin', :podspec => 'https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec', :inhibit_warnings => true
   pod 'OpenSans'
   pod 'lottie-ios'
   pod 'Bugsee'

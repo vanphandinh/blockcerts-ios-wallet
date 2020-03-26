@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38588BE32424B16800673490 /* Blockcerts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38588BE22424B16800673490 /* Blockcerts.framework */; };
+		38588BE42424B16800673490 /* Blockcerts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 38588BE22424B16800673490 /* Blockcerts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		38588BF22424C08A00673490 /* CryptoEthereumSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38588BEA2424B66800673490 /* CryptoEthereumSwift.framework */; };
+		38588BF42424C08A00673490 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38588BEB2424B66800673490 /* CryptoSwift.framework */; };
+		38588BF62424C08A00673490 /* EthereumKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38588BE92424B66800673490 /* EthereumKit.framework */; };
+		38588BFB2424C11C00673490 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 38588BF82424C11B00673490 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		38588BFC2424C11C00673490 /* CryptoEthereumSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 38588BF92424C11B00673490 /* CryptoEthereumSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		38588BFD2424C11C00673490 /* EthereumKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 38588BFA2424C11B00673490 /* EthereumKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4ED0B2DF3AD647A603154AA6 /* InformationLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED0BB2EA5F0AA019AF2C10A /* InformationLogger.swift */; };
 		6360BE865570CCDF5C814E4E /* libPods-certificatesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F8BC2D27986317037BFD9D /* libPods-certificatesTests.a */; };
 		830120351EF4483F008EC454 /* ArgumentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830120341EF4483F008EC454 /* ArgumentParser.swift */; };
@@ -29,7 +37,6 @@
 		8318FC511DAD5337006A8FD5 /* IssuerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318FC501DAD5337006A8FD5 /* IssuerCollectionViewController.swift */; };
 		831EDC0F1ED3A20E004F135B /* RenderedCertificateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831EDC0D1ED3A20E004F135B /* RenderedCertificateView.swift */; };
 		831EDC101ED3A20E004F135B /* RenderedCertificateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 831EDC0E1ED3A20E004F135B /* RenderedCertificateView.xib */; };
-		831EDC131ED5F7DA004F135B /* CoreBitcoinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831EDC111ED5F7DA004F135B /* CoreBitcoinManager.swift */; };
 		831EDC141ED5F7DA004F135B /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831EDC121ED5F7DA004F135B /* Keychain.swift */; };
 		83229D461F7EBF7100A3E012 /* DeepLinkOnFreshInstall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83229D451F7EBF7100A3E012 /* DeepLinkOnFreshInstall.swift */; };
 		8329A0521DDA825200863285 /* IssuerSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8329A0501DDA825200863285 /* IssuerSummaryTableViewCell.swift */; };
@@ -146,10 +153,14 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		83111B791DA414EC006B058D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				38588BFB2424C11C00673490 /* CryptoSwift.framework in Embed Frameworks */,
+				38588BFC2424C11C00673490 /* CryptoEthereumSwift.framework in Embed Frameworks */,
+				38588BFD2424C11C00673490 /* EthereumKit.framework in Embed Frameworks */,
+				38588BE42424B16800673490 /* Blockcerts.framework in Embed Frameworks */,
 				83FF5DE81ECBA4100063397C /* Blockcerts.framework in Embed Frameworks */,
 				830AB9F01DA6BC4B00185E19 /* CommonCrypto.framework in Embed Frameworks */,
 				83111B781DA414EB006B058D /* JSONLD.framework in Embed Frameworks */,
@@ -164,6 +175,13 @@
 		06EE858C3746A1D1413048DB /* Pods-certificatesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-certificatesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-certificatesUITests/Pods-certificatesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		18ED839C370360E8561D2E36 /* Pods-certificates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-certificates.debug.xcconfig"; path = "Pods/Target Support Files/Pods-certificates/Pods-certificates.debug.xcconfig"; sourceTree = "<group>"; };
 		1E8F8F788045077CB0389D73 /* libPods-certificates.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-certificates.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		38588BE22424B16800673490 /* Blockcerts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Blockcerts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38588BE92424B66800673490 /* EthereumKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EthereumKit.framework; path = Carthage/Build/iOS/EthereumKit.framework; sourceTree = "<group>"; };
+		38588BEA2424B66800673490 /* CryptoEthereumSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoEthereumSwift.framework; path = Carthage/Build/iOS/CryptoEthereumSwift.framework; sourceTree = "<group>"; };
+		38588BEB2424B66800673490 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
+		38588BF82424C11B00673490 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
+		38588BF92424C11B00673490 /* CryptoEthereumSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoEthereumSwift.framework; path = Carthage/Build/iOS/CryptoEthereumSwift.framework; sourceTree = "<group>"; };
+		38588BFA2424C11B00673490 /* EthereumKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EthereumKit.framework; path = Carthage/Build/iOS/EthereumKit.framework; sourceTree = "<group>"; };
 		3C15AEB86836CEA4E704911A /* Pods-certificatesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-certificatesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-certificatesTests/Pods-certificatesTests.release.xcconfig"; sourceTree = "<group>"; };
 		4088D4A52B1AC1D4960CD4ED /* libPods-certificatesUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-certificatesUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ED0BB2EA5F0AA019AF2C10A /* InformationLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationLogger.swift; sourceTree = "<group>"; };
@@ -195,7 +213,6 @@
 		8318FC561DAD958F006A8FD5 /* wallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wallet.entitlements; sourceTree = "<group>"; };
 		831EDC0D1ED3A20E004F135B /* RenderedCertificateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderedCertificateView.swift; sourceTree = "<group>"; };
 		831EDC0E1ED3A20E004F135B /* RenderedCertificateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RenderedCertificateView.xib; sourceTree = "<group>"; };
-		831EDC111ED5F7DA004F135B /* CoreBitcoinManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreBitcoinManager.swift; sourceTree = "<group>"; };
 		831EDC121ED5F7DA004F135B /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		83229D451F7EBF7100A3E012 /* DeepLinkOnFreshInstall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkOnFreshInstall.swift; sourceTree = "<group>"; };
 		8329A0501DDA825200863285 /* IssuerSummaryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssuerSummaryTableViewCell.swift; sourceTree = "<group>"; };
@@ -294,8 +311,12 @@
 				A92E89662049A63D0035460B /* liblottie-ios.a in Frameworks */,
 				83FF5DE71ECBA4100063397C /* Blockcerts.framework in Frameworks */,
 				830AB9EF1DA6BC4B00185E19 /* CommonCrypto.framework in Frameworks */,
+				38588BE32424B16800673490 /* Blockcerts.framework in Frameworks */,
+				38588BF22424C08A00673490 /* CryptoEthereumSwift.framework in Frameworks */,
 				83111B771DA414EB006B058D /* JSONLD.framework in Frameworks */,
 				ABC6BB21B68837562003AED2 /* libPods-certificates.a in Frameworks */,
+				38588BF42424C08A00673490 /* CryptoSwift.framework in Frameworks */,
+				38588BF62424C08A00673490 /* EthereumKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +373,9 @@
 		83111B1B1DA4110C006B058D = {
 			isa = PBXGroup;
 			children = (
+				38588BF92424C11B00673490 /* CryptoEthereumSwift.framework */,
+				38588BF82424C11B00673490 /* CryptoSwift.framework */,
+				38588BFA2424C11B00673490 /* EthereumKit.framework */,
 				EEAF834D21470884008EC1FA /* Localizations.swift */,
 				836031C41E5E513A005B2D2E /* Settings.bundle */,
 				836031C11E5E5064005B2D2E /* Assets */,
@@ -392,7 +416,6 @@
 				83FF5DE91ECBAC7A0063397C /* CertificateView.swift */,
 				83A6EDD81DAFFD5B00ABFB47 /* CertificateViewController.swift */,
 				838DC13A1E43F0F700533AEB /* CertificateViewController.xib */,
-				831EDC111ED5F7DA004F135B /* CoreBitcoinManager.swift */,
 				83111B331DA4110C006B058D /* Info.plist */,
 				A970D0092044AFC6004BC1AE /* introduction.mp4 */,
 				A9B17850203746E300B76375 /* IssuerCollectionEmptyView.xib */,
@@ -557,6 +580,10 @@
 		A653FD3709C0B4FB37E36B2A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				38588BEA2424B66800673490 /* CryptoEthereumSwift.framework */,
+				38588BEB2424B66800673490 /* CryptoSwift.framework */,
+				38588BE92424B66800673490 /* EthereumKit.framework */,
+				38588BE22424B16800673490 /* Blockcerts.framework */,
 				A92E89672049A63D0035460B /* liblottie-ios.a */,
 				83FF5DE61ECBA4100063397C /* Blockcerts.framework */,
 				830AB9EE1DA6BC4B00185E19 /* CommonCrypto.framework */,
@@ -900,7 +927,6 @@
 				EE8DD6AA2148705500795B0D /* CertificateVerificationViewController.swift in Sources */,
 				838DE6CD1F3A771D00185A49 /* ManagedIssuer.swift in Sources */,
 				8318FC511DAD5337006A8FD5 /* IssuerCollectionViewController.swift in Sources */,
-				831EDC131ED5F7DA004F135B /* CoreBitcoinManager.swift in Sources */,
 				831EDC0F1ED3A20E004F135B /* RenderedCertificateView.swift in Sources */,
 				83ACB76E1EDE30B700A1149E /* OnboardingViewControllers.swift in Sources */,
 				8337CFCC1E1D65140080E876 /* SettingsTableViewController.swift in Sources */,
@@ -1149,7 +1175,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 112;
 				DEVELOPMENT_TEAM = CYEWR6MU44;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = wallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1173,7 +1202,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 112;
 				DEVELOPMENT_TEAM = CYEWR6MU44;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = wallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

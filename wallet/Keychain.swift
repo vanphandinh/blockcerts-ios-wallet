@@ -9,6 +9,7 @@
 import Foundation
 import Security
 import Blockcerts
+import EthereumKit
 
 // reserved for backcompat
 private var unusedKeyIndexKeyV1 = "org.blockcerts.unused-key-index"
@@ -21,16 +22,15 @@ public enum KeychainErrors : Error {
 
 class Keychain {
     public var seedPhrase : String {
-        return mnemonic.words.compactMap({ $0 as? String}).joined(separator: " ")
+        return mnemonic.joined(separator: " ")
     }
     private var unusedKeyIndex : UInt32 {
         didSet {
             UserDefaults.standard.set(Int(unusedKeyIndex), forKey: unusedKeyIndexKey)
         }
     }
-    private let mnemonic : BTCMnemonic
-    private let keychain : BTCKeychain
-    private let accountKeychain : BTCKeychain
+    private let mnemonic : [String]
+    private let hdwallet : HDWallet
     
     convenience init(seedPhrase: String) {
         // This lookup returns 0 if it can't be found.
@@ -40,48 +40,46 @@ class Keychain {
     
     init(seedPhrase: String, unusedKeyIndex: UInt32) {
         let words = seedPhrase.components(separatedBy: " ")
-        guard let mnemonic = BTCMnemonic(words: words, password: "", wordListType: .english) else {
+        var seed: Data
+        do {
+            seed = try Mnemonic.createSeed(mnemonic: words)
+        } catch (let error) {
+            print(error.localizedDescription)
             fatalError("Can't start a Keychain with invalid phrase:\"\(seedPhrase)\"")
         }
         self.unusedKeyIndex = unusedKeyIndex
-        self.mnemonic = mnemonic
-        keychain = mnemonic.keychain
-        accountKeychain = keychain.derivedKeychain(withPath: "m/44'/0'/0'/0")
+        mnemonic = words
+        hdwallet = HDWallet(seed: seed, network: .mainnet)
     }
     
     func nextPublicAddress() -> String {
-        let key = accountKeychain.key(at: unusedKeyIndex)
+        var address: String!
+        while (address == .none) {
+            address = try? hdwallet.address(at: unusedKeyIndex)
+        }
         unusedKeyIndex += 1
         
-        return key?.address.string ?? ""
+        return address
     }
     
-    func has(publicKey : String) -> Bool {
-        guard let keyData = publicKey.asHexData() else {
-            // If the publicKey isn't a valid hex string, then this keychain obviously doesn't have it.
-            return false
-        }
-        
-        let key = BTCKey(publicKey: keyData)
-        let limit : UInt = 10 // arbitrary. What's a good limit?
-        
-        return nil == accountKeychain.find(forPublicKey: key, hardened: true, limit: limit) // Also unsure of hardened value.
-    }
-    
-    
+//    func has(publicKey : String) -> Bool {
+//        guard let keyData = publicKey.asHexData() else {
+//            // If the publicKey isn't a valid hex string, then this keychain obviously doesn't have it.
+//            return false
+//        }
+//
+//        let key = BTCKey(publicKey: keyData)
+//        let limit : UInt = 10 // arbitrary. What's a good limit?
+//
+//        return nil == accountKeychain.find(forPublicKey: key, hardened: true, limit: limit) // Also unsure of hardened value.
+//    }
 }
 
 // MARK: Static methods for seed phrase generation
 extension Keychain {
     static func generateSeedPhrase() -> String {
-        let randomData = BTCRandomDataWithLength(32) as Data
-        return generateSeedPhrase(withRandomData: randomData)
-    }
-    
-    static func generateSeedPhrase(withRandomData randomData: Data) -> String {
-        let mn = BTCMnemonic(entropy: randomData, password: "", wordListType: .english)
-        
-        return mn?.words.compactMap({ $0 as? String }).joined(separator: " ") ?? ""
+        let words = Mnemonic.create(strength: .high, language: .english)
+        return words.joined(separator: " ")
     }
 }
 
@@ -143,8 +141,8 @@ extension Keychain {
     
     public static func isValidPassphrase(_ passphrase: String) -> Bool {
         let words = passphrase.components(separatedBy: " ")
-        let mnemonic = BTCMnemonic(words: words, password: "", wordListType: .english)
-        return (mnemonic != nil)
+        let seed = try? Mnemonic.createSeed(mnemonic: words)
+        return (seed != Optional.none)
     }
     
     public static func hasPassphrase() -> Bool {
